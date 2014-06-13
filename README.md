@@ -23,7 +23,6 @@ app.controller('AppCtrl', function($scope) {
 
     // By default the 'text' property will be used as the display text in the dropdown entry.
     // All options that are not dividers must have a 'text' property.
-    // Or you can specify a different property name via the dropdown-item-label attribute.
     //
     // If an options object has an 'href' property set, then that dropdown entry
     //   will behave as a link and cannot be selected.
@@ -54,16 +53,13 @@ app.controller('AppCtrl', function($scope) {
 
 And in your html, specify the `dropdown-select` and `dropdown-model` attributes on an element.
 
-You can optionally set `dropdown-item-label` to specify a different label field from the default (which is 'text'):
-
 ```html
 <div ng-controller="AppCtrl">
     <div>
         <h1>Dropdown Select</h1>
         <p>You have selected: {{ddSelectSelected}}</p>
         <div dropdown-select="ddSelectOptions"
-            dropdown-model="ddSelectSelected"
-            dropdown-item-label="text" >
+            dropdown-model="ddSelectSelected">
         </div>
     </div>
 </div>
@@ -78,8 +74,7 @@ For a menu-style dropdown, use `dropdown-menu` in place of `dropdown-select`:
         <p>You have selected: {{ddSelectSelected}}</p>
         <a href='' title=''
             dropdown-menu="ddSelectOptions"
-            dropdown-model="ddSelectSelected"
-            dropdown-item-label="text">
+            dropdown-model="ddSelectSelected">
             Menu
         </a>
     </div>
@@ -91,7 +86,6 @@ You can specify a function to call upon dropdown value change by specifying the 
 ```html
 <div dropdown-select="ddSelectOptions"
     dropdown-model="ddSelectSelected"
-    dropdown-item-label="text"
     dropdown-onchange="someMethod(selected)" >
 </div>
 ```
