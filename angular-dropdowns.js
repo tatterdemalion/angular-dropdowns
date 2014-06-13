@@ -42,11 +42,12 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
         dropdownSelectItem: '='
       },
       link: function(scope, element, attrs, dropdownSelectCtrl) {
-        scope.selectItem = function() {
+        scope.selectItem = function(ev) {
+          ev.preventDefault();
           dropdownSelectCtrl.select(scope.dropdownSelectItem);
         };
       },
-      template: "<li><a href='#' class='dropdown-item' ng-click='selectItem()'>{{dropdownSelectItem}}</a></li>"
+      template: "<li><a href='#' class='dropdown-item' ng-click='selectItem($event)'>{{dropdownSelectItem}}</a></li>"
     };
   }
 ]).directive('dropdownMenu', [
@@ -101,14 +102,12 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
         dropdownItemLabel: '='
       },
       link: function(scope, element, attrs, dropdownMenuCtrl) {
-        scope.selectItem = function() {
-          if (scope.dropdownMenuItem.href) {
-            return;
-          }
+        scope.selectItem = function(ev) {
+          ev.preventDefault();
           dropdownMenuCtrl.select(scope.dropdownMenuItem);
         };
       },
-      template: "<li><a href='#' class='dropdown-item' ng-click='selectItem()'>{{dropdownMenuItem}}</a></li>"
+      template: "<li><a href='#' class='dropdown-item' ng-click='selectItem($event)'>{{dropdownMenuItem}}</a></li>"
     };
   }
 ]);
