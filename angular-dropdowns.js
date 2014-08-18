@@ -20,16 +20,11 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
             });
           };
           body = $document.find("body");
-          body.bind("click", function() {
-            $element.removeClass('active');
+          body.bind("click", function(e) {
+            if (e.target !== $element[0])
+              $element.removeClass('active');
           });
           $element.bind('click', function(event) {
-            event.stopPropagation();
-            $('.wrap-dd-select').each(function(){
-              if ($(this)[0] !== $element[0]) {
-                $(this).removeClass('active');
-              }
-            });
             $element.toggleClass('active');
           });
         }
