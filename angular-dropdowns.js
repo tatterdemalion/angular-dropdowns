@@ -25,6 +25,11 @@ angular.module('ngDropdowns', []).directive('dropdownSelect', [
           });
           $element.bind('click', function(event) {
             event.stopPropagation();
+            $('.wrap-dd-select').each(function(){
+              if ($(this)[0] !== $element[0]) {
+                $(this).removeClass('active');
+              }
+            });
             $element.toggleClass('active');
           });
         }
